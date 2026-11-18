@@ -1,0 +1,23 @@
+# Private notes and files (not part of the public project)
+thesis/
+*Πτυχιακη*
+*πτυχιακη*
+*Thesis*
+*thesis*
+
+# Downloaded raw data (explain in the README how to get it)
+data/
+*.zip
+
+# Virtual environment (each person creates their own from requirements.txt)
+.venv/
+
+# Python cache files (created automatically when code runs)
+__pycache__/
+*.pyc
+
+# Editor and system files (~$* = Excel lock files, created while a file is open)
+~$*
+.vscode/
+Thumbs.db
+desktop.ini

@@ -1,0 +1,5 @@
+run,solar_kWh,heating_kWh,heating_min,heating_max,cooling_kWh,cooling_min,cooling_max
+"BESTEST window (double clear), Case 600",10115.5,1186.7,1025.7,1344.5,6684.7,6185.7,7056.5
+"BESTEST window (double clear), Case 610",7802.5,1221.4,1053.7,1383.3,4837.6,4400.5,5243.4
+"Normal window (double low-E), Case 600",7322.9,1094.3,939.0,1245.4,4696.8,4329.7,4980.1
+"Normal window (double low-E), Case 610",5662.6,1128.5,964.9,1285.3,3381.7,3059.9,3685.5

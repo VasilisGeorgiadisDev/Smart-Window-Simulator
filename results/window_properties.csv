@@ -1,0 +1,9 @@
+key,window,state,U_W_m2K,SHGC,Tvis,source
+normal_lowE,"Double glazing, low-E, argon",fixed,1.493,0.568,0.745,[1] 'Dbl LoE (e2=.1) Clr 6mm/13mm Arg'
+normal_clear,"Double glazing, clear, air",fixed,2.67,0.703,0.781,[1] 'Dbl Clr 6mm/13mm Air'
+ec_sageglass,"EC, SageGlass Clear with SR2.0",clear,1.65,0.41,0.6,"[2] MKT-043.7, 'SageGlass Clear with SR2.0'"
+ec_sageglass,"EC, SageGlass Clear with SR2.0",light tint,1.65,0.16,0.18,"[2] MKT-043.7, 'SageGlass Clear with SR2.0'"
+ec_sageglass,"EC, SageGlass Clear with SR2.0",medium tint,1.65,0.11,0.06,"[2] MKT-043.7, 'SageGlass Clear with SR2.0'"
+ec_sageglass,"EC, SageGlass Clear with SR2.0",full tint,1.65,0.09,0.01,"[2] MKT-043.7, 'SageGlass Clear with SR2.0'"
+ec_generic,"EC, generic absorptive (EnergyPlus)",clear,1.493,0.745,0.752,[1] 'Dbl Elec Abs Bleached/Colored 6mm/13mm Arg'
+ec_generic,"EC, generic absorptive (EnergyPlus)",full tint,1.493,0.158,0.114,[1] 'Dbl Elec Abs Bleached/Colored 6mm/13mm Arg'

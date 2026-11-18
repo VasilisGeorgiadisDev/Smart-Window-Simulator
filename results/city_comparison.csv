@@ -1,0 +1,3 @@
+city,mean_T_out_C,sun_on_facade_kWh_m2,normal_heating_kWh,normal_cooling_kWh,smart_heating_kWh,smart_cooling_kWh,saved_kWh,saved_%,saved_May_Oct_kWh,saved_Nov_Apr_kWh,saved_from_clear_state_kWh,saved_from_switching_kWh,clear_state_SHGC_kWh,clear_state_U_value_kWh,clear_state_angle_curve_kWh,cooling_May_Oct_T_out_below_27C_%,cooling_May_Oct_T_out_below_24C_%
+Athens,18.24,1305.4,1094.34,4696.79,1246.51,1341.57,3203.05,55.31,1730.68,1472.36,1385.05,1818.0,1471.05,-11.95,-74.05,36.1,16.17
+Amsterdam,11.26,942.99,3286.36,1791.56,3636.46,201.47,1240.0,24.42,992.13,247.87,543.43,696.57,655.57,-84.0,-28.14,90.71,77.89

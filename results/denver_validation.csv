@@ -1,0 +1,4 @@
+model,heating_MWh,heating_vs_accepted,cooling_MWh,cooling_vs_accepted
+"1) 1R1C, SHGC constant",4.43,inside,10.29,+51 % (too high)
+"2) 1R1C, SHGC with sun angle",4.52,inside,8.34,+22 % (too high)
+"3) 5R1C, SHGC with sun angle",3.95,inside,6.66,inside

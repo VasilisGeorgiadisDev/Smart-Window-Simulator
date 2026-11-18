@@ -1,0 +1,6 @@
+run,solar_kWh,heating_kWh,cooling_kWh,tinted_%_of_daylight,mean_Tvis_daylight,total_kWh,heating_vs_normal_%,cooling_vs_normal_%,total_vs_normal_%
+1) normal glass,7322.93,1094.34,4696.79,,0.74,5791.13,0.0,0.0,0.0
+"2) smart, always clear",5393.17,1207.94,3198.14,0.0,0.6,4406.08,10.38,-31.91,-23.92
+"3) smart, always full tint",1183.87,1670.03,832.6,100.0,0.01,2502.63,52.61,-82.27,-56.79
+"4) smart + rule, light tint",3079.17,1246.51,1341.57,56.17,0.36,2588.08,13.91,-71.44,-55.31
+"5) smart + rule, full tint",2543.82,1255.01,946.76,53.62,0.28,2201.78,14.68,-79.84,-61.98
