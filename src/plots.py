@@ -84,9 +84,9 @@ def plot_monthly_climate(city):
     # (a) Temperature: line = 10-year mean, shaded band = lowest to highest year
     ax_T.fill_between(months, climate["T_lowest_C"], climate["T_highest_C"],
                       color=color, alpha=0.25, linewidth=0,
-                      label=f"Range {years_text}")
+                      label="Lowest–highest year")
     ax_T.plot(months, climate["T_mean_C"], color=color, marker="o", markersize=7,
-              label=f"{city}, mean")
+              label=f"{city}, mean {years_text}")
     ax_T.set_ylabel("Outdoor temperature (°C)")
     ax_T.set_ylim(0, 35)
 
@@ -94,20 +94,20 @@ def plot_monthly_climate(city):
     mean = climate["sun_mean_kWh_m2"]
     below = mean - climate["sun_lowest_kWh_m2"]
     above = climate["sun_highest_kWh_m2"] - mean
-    ax_sun.bar(months, mean, width=0.7, color=color, label=f"{city}, mean")
+    ax_sun.bar(months, mean, width=0.7, color=color, label=f"{city}, mean {years_text}")
     ax_sun.errorbar(months, mean, yerr=[below, above], fmt="none", ecolor="black",
                     elinewidth=1.5, capsize=4, capthick=1.5,
-                    label=f"Range {years_text}")
+                    label="Lowest–highest year")
     ax_sun.set_ylabel("Irradiation on south facade\n(kWh/m² per month)")
     ax_sun.set_ylim(0, 160)
 
     # Same month axis and legend style for both panels
     for ax in (ax_T, ax_sun):
         ax.set_xticks(months)
-        ax.set_xticklabels(MONTH_NAMES)
+        ax.set_xticklabels(MONTH_NAMES, fontsize=12)    # smaller, so the names don't touch
         ax.set_xlim(0.4, 12.6)
         ax.set_xlabel("Month")
-        add_legend_on_top(ax, columns=2)
+        add_legend_on_top(ax, columns=1)                # one entry per line: keeps the plots wide
     add_panel_label(ax_T, "(a)")
     add_panel_label(ax_sun, "(b)")
 
@@ -165,6 +165,10 @@ def plot_sun_path(city):
     ax_angle.set_ylabel("Incidence angle on\nsouth window (°)")
     ax_angle.set_ylim(0, 90)
     ax_angle.set_yticks(range(0, 91, 15))
+    # The key to reading panel (b): small angle = sun straight onto the glass
+    ax_angle.text(12, 3, "0° = sun hits the glass head-on,\n90° = sun along the glass.\n"
+                  "Lines end at sunrise/sunset\nor when the sun goes behind the wall.",
+                  ha="center", va="bottom", fontsize=11)
 
     for ax in (ax_path, ax_angle):
         add_legend_on_top(ax, columns=3)
@@ -175,12 +179,15 @@ def plot_sun_path(city):
     save_figure(fig, f"{city.lower()}_sun_path.png")
 
 
-# One fixed colour per type of glass
+# One fixed colour (and line style) per type of glass. The normal glass of the project is
+# double low-E, so it gets grey: the colour of "normal glass" in the smart-glass figures.
+# Green is not used here, because it means "smart glass" in the other figures.
 GLASS_COLORS = {
-    "single clear": PLOT_COLORS["grey"],
+    "single clear": "black",
     "double clear": PLOT_COLORS["purple"],
-    "double low-E": PLOT_COLORS["green"],
+    "double low-E": PLOT_COLORS["grey"],
 }
+GLASS_LINES = {"single clear": ":", "double clear": "-", "double low-E": "-"}
 
 
 def plot_glass_angle(city):
@@ -220,7 +227,8 @@ def plot_glass_angle(city):
     # (a) angle factor of the three types of glass
     angles = range(0, 91)
     for name in ANGLE_CURVES:
-        ax_curve.plot(angles, angle_factor(name, angles), color=GLASS_COLORS[name], label=name)
+        ax_curve.plot(angles, angle_factor(name, angles), color=GLASS_COLORS[name],
+                      linestyle=GLASS_LINES[name], label=name)
     ax_curve.set_xlabel("Incidence angle (°)")
     ax_curve.set_ylabel("SHGC relative to head-on")
     ax_curve.set_xlim(0, 90)
@@ -230,12 +238,14 @@ def plot_glass_angle(city):
 
     # (b) monthly solar heat through the main normal window
     months = monthly.index
-    ax_gain.plot(months, monthly["same_SHGC_at_all_angles_kWh_m2"], color=PLOT_COLORS["grey"],
-                 marker="o", markersize=7, linestyle="--", label="same SHGC at all angles")
+    # light grey dashed line with open circles = the simple method, solid = with the sun angle
+    ax_gain.plot(months, monthly["same_SHGC_at_all_angles_kWh_m2"], color="#A6A6A6",
+                 marker="o", markersize=7, markerfacecolor="white", linestyle="--",
+                 label="same SHGC at all angles")
     ax_gain.plot(months, monthly["with_sun_angle_kWh_m2"], color=GLASS_COLORS[curve],
                  marker="o", markersize=7, label="with sun angle")
     ax_gain.set_xticks(months)
-    ax_gain.set_xticklabels(MONTH_NAMES)
+    ax_gain.set_xticklabels(MONTH_NAMES, fontsize=12)       # smaller, so the names don't touch
     ax_gain.set_xlim(0.4, 12.6)
     ax_gain.set_xlabel("Month")
     ax_gain.set_ylabel("Solar heat through glass\n(kWh/m² per month)")
@@ -370,7 +380,7 @@ def draw_balcony_3d(ax, sun, title):
     p = profile_angle(sun, wall_azimuth=0).iloc[0]
     lit = float(sunlit_fraction(p, depth, flat.BALCONY_GAP, door_top))
     ax.set_title(f"{title}\nsun height {h:.0f}°, azimuth {azimuth:.0f}°\n"
-                 f"profile angle {p:.0f}°, door in sun {lit * 100:.0f} %", fontsize=13, fontweight="bold")
+                 f"profile angle {p:.0f}°, door in sun {lit * 100:.0f} %", fontsize=15, fontweight="bold")
 
 
 def plot_balcony_shadow(city="Athens"):
@@ -380,7 +390,7 @@ def plot_balcony_shadow(city="Athens"):
     """
     latitude, longitude = CITIES[city]
     apply_plot_style()
-    fig = plt.figure(figsize=(18, 6.2))
+    fig = plt.figure(figsize=(18, 7))
 
     days = {"21 June, 10:00": ("2022-06-21", PLOT_COLORS["red"]),
             "21 December, 10:00": ("2022-12-21", PLOT_COLORS["blue"])}
@@ -490,7 +500,7 @@ def plot_ec_yearly():
         ax.text(0.03, 0.95, city, transform=ax.transAxes, fontsize=17, fontweight="bold", va="top")
         add_panel_label(ax, panel)
         ax.tick_params(labelleft=True)          # numbers on both y-axes (sharey hides them)
-    axes[0].set_ylabel("Heat demand (kWh per year)")
+    axes[0].set_ylabel("Heating and cooling demand\n(kWh per year)")
 
     handles, labels = axes[0].get_legend_handles_labels()
     fig.legend(handles, labels, loc="lower center", bbox_to_anchor=(0.5, 1.0), ncol=2,

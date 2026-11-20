@@ -463,10 +463,8 @@ def run_normal_window(city="Athens"):
     both = ((rc["heating_W"] > 0) & (rc["cooling_W"] > 0)).sum()
     print(f"4) Hours with heating AND cooling: {both} (should be 0)")
 
-    RESULTS_FOLDER.mkdir(exist_ok=True)
-    path = RESULTS_FOLDER / f"{city.lower()}_{MAIN_NORMAL}_yearly_demand.csv"
-    yearly.round(1).to_csv(path)
-    print(f"\nSaved: {path}")
+    # Nothing is saved: this simple 1R1C model is only a step towards the main 5R1C model,
+    # and its numbers should not be mixed with the main results in results/.
     return rc
 
 

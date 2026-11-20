@@ -9,6 +9,8 @@ clear to tinted when the sun would overheat the room.
 
 ![Yearly heating and cooling demand, normal glass vs smart glass, Athens and Amsterdam](figures/ec_vs_normal_yearly.png)
 
+*Yearly heating and cooling with normal glass (grey) and smart glass (green), 10-year mean. The smart glass removes most of the cooling in both cities but adds some heating; the saving is much larger in Athens.*
+
 ## Main result
 
 The room, the glass and the control rule are the same in both cities; only the weather changes.
@@ -51,6 +53,8 @@ Athens gains more, and in a real home probably by an even larger factor.
   take back 86 kWh.
 
 ![Monthly heating and cooling, normal vs smart glass, both cities](figures/ec_vs_normal_monthly.png)
+
+*Month by month: heating (a, b) and cooling (c, d). In Athens the smart glass cuts the summer cooling peak; in Amsterdam its extra heating shows in every month.*
 
 ### In electricity (illustration only)
 
@@ -152,6 +156,8 @@ the room from 2127 to 1421 kWh per year (−33 %) and raises the heating demand 
 per year (+23 %).
 
 ![Shadow of a balcony on a south wall in Athens](figures/athens_balcony_shadow.png)
+
+*(a, b) Shadow of a 1 m balcony on the south wall at 10:00 solar time: in June the door is fully in shade, in December fully in sun. (c) Side view at noon: the shadow reaches d · tan(p) down the wall, where p is the profile angle of the sun.*
 
 ## How to run
 
@@ -270,4 +276,4 @@ MIT License, see [LICENSE](LICENSE).
 
 ## Author
 
-Vasilis Georgiadis, physics graduate (University of Patras). GitHub: [VasilisGeorgiadisDev](https://github.com/VasilisGeorgiadisDev)
+Vasileios Georgiadis, physics graduate (University of Patras). GitHub: [VasilisGeorgiadisDev](https://github.com/VasilisGeorgiadisDev)

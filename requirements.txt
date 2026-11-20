@@ -4,4 +4,4 @@ numpy==2.5.4        # fast maths on arrays of numbers
 pandas==3.1.1       # tables of hourly weather data and results
 matplotlib==3.11.2  # figures
 XlsxWriter==3.3.1   # formatted Excel reports
-pillow==13.0.0      # images (used to put figures inside Excel reports)
+pillow==13.0.0      # reads the size of the figures for the Excel report
